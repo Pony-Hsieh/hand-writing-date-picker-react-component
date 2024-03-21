@@ -2,7 +2,7 @@ import { useState } from 'react';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import { getDatesOfMonth, getFirstDayOfMonth } from '../scripts/utils';
-import '../styles/components/Calender.scss';
+import '../styles/components/Calendar.scss';
 
 dayjs.extend(isBetween);
 
@@ -119,13 +119,13 @@ function Calendar(props) {
   return (
     <div className="calendar">
       <div className="header">
-        <button className="prevMonth" onClick={handlePrevMonth}>
+        <button type="button" className="prevMonth" onClick={handlePrevMonth}>
           &lt;
         </button>
         <div>
           {date.year()}年{date.month() + 1}月
         </div>
-        <button className="nextMonth" onClick={handleNextMonth}>
+        <button type="button" className="nextMonth" onClick={handleNextMonth}>
           &gt;
         </button>
       </div>
