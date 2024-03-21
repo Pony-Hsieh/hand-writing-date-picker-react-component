@@ -19,7 +19,7 @@ function App() {
           selectedDates={selectedDates1}
           setSelectedDates={setSelectedDates1}
         />
-        <p>
+        <p className="dateRange">
           selected date range:
           <br />
           {selectedDates1.length > 0 ? (
@@ -38,7 +38,7 @@ function App() {
           selectedDates={selectedDates2}
           setSelectedDates={setSelectedDates2}
         />
-        <p>
+        <p className="dateRange">
           selected date range:
           <br />
           {selectedDates2.length > 0 ? (
