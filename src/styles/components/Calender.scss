@@ -1,0 +1,58 @@
+.calendar {
+  max-width: 350px;
+  height: 240px;
+  font-size: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+}
+
+.dateWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.date {
+  width: calc(100% / 7);
+  line-height: 36px;
+  text-align: center;
+}
+
+.currentMonthDate {
+  &.selected {
+    color: white;
+    background-color: #006edc;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: #ccc;
+  }
+}
+
+.today {
+  color: black;
+  background-color: #ffff76;
+}
+
+.lastMonthDate,
+.nextMonthDate {
+  color: #757575;
+  cursor: not-allowed;
+}
+
+.prevMonth,
+.nextMonth {
+  width: 44px;
+  height: 44px;
+  background-color: white;
+  border: none;
+  &:hover {
+    cursor: pointer;
+    background-color: #e6e6e6;
+  }
+}
