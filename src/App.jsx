@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="wrapper">
-      <h1>This is a page that includes Calender Component</h1>
+      <h1>This is a page that includes Calendar Component</h1>
 
       <div className="calendarWrapper">
         <h2>init date: today</h2>
