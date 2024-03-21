@@ -1,7 +1,9 @@
 # 測驗繳交說明
 
 ## Scenario
-- Task 1
+- Task - 1, Task - 2 皆有作答
+- 元件 Calendar1 對應 Task - 1  
+  元件 Calendar2 對應 Task - 2
 
 ## instruction to build and run the code
 1. [github pages](https://pony-hsieh.github.io/hand-writing-date-picker-react-component/)
