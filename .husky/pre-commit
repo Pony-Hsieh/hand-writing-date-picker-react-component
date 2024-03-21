@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "--- start pre-commit git hook ---"
+npx lint-staged -v
+echo "--- end pre-commit git hook ---"
