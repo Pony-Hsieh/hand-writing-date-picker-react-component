@@ -1,0 +1,48 @@
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**/*.md'
+      - '.vscode/**'
+
+permissions:
+  contents: write
+
+jobs:
+  eslint-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install And Run Eslint Check
+        run: |
+          npm ci
+          npm run lint
+
+  build-and-deploy:
+    needs: eslint-check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install and Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Copy index.html As 404 Page
+        run: cd ./dist && cp index.html 404.html
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
