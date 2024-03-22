@@ -141,7 +141,7 @@ function Calendar2(props) {
   };
 
   return (
-    <div className="calendar2">
+    <div className="calendar calendar2">
       <div className="header">
         <button type="button" className="prevMonth" onClick={handlePrevMonth}>
           &lt;

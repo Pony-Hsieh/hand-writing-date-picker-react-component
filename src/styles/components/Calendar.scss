@@ -1,0 +1,38 @@
+.calendar {
+  font-size: 16px;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+  }
+  .dateWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .today {
+    color: black;
+    background-color: #ffff76;
+  }
+  .date {
+    width: calc(100% / 7);
+    line-height: 36px;
+    text-align: center;
+    &.selected {
+      color: white;
+      background-color: #006edc;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: #ccc;
+    }
+  }
+  .prevMonth,
+  .nextMonth {
+    width: 44px;
+    height: 44px;
+    background-color: white;
+    border: none;
+  }
+}

@@ -119,7 +119,7 @@ function Calendar1(props) {
   };
 
   return (
-    <div className="calendar1">
+    <div className="calendar calendar1">
       <div className="header">
         <button className="prevMonth" type="button">
           &lt;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import dayjs from 'dayjs';
 import Calendar1 from './components/Calendar1';
 import Calendar2 from './components/Calendar2';
-import dayjs from 'dayjs';
 import './styles/App.scss';
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
         <h2>Task - 1</h2>
         <Calendar1
           initDate={dayjs()}
+          // initDate={dayjs('2024-05')}
           selectedDates={selectedDates1}
           setSelectedDates={setSelectedDates1}
         />
