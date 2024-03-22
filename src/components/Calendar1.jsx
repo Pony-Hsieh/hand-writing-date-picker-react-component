@@ -16,6 +16,10 @@ function Calendar1(props) {
   const handleSelectedDates = (e) => {
     const choosingDate = dayjs(`${e.target.dataset.thisDate}`);
 
+    if (!choosingDate.isSame(date, 'month')) {
+      return;
+    }
+
     if (clickCounter === 0) {
       clickCounter = 1;
       setSelectedDates([choosingDate, choosingDate]);
@@ -49,9 +53,9 @@ function Calendar1(props) {
       date.year(),
       date.month() + 1,
     );
-    const lastDateOfLastMonth = getDatesOfMonth(
-      date.subtract(1, 'month').year(),
-      date.subtract(1, 'month').month() + 1,
+    const firstDateOfThisMonth = dayjs(`${date.year()}-${date.month() + 1}-01`);
+    const lastDateOfThisMonth = dayjs(
+      `${date.year()}-${date.month() + 1}-${datesCount}`,
     );
 
     // 這個月所有天數
@@ -75,9 +79,6 @@ function Calendar1(props) {
           data-this-date={`${dayjs(thisDate).format('YYYY/MM/DD')}`}
           key={i}
           className={classList}
-          onClick={(e) => {
-            handleSelectedDates(e);
-          }}
         >
           {i}
         </div>,
@@ -86,9 +87,14 @@ function Calendar1(props) {
 
     // 上個月最後幾天
     for (let i = 1; i < firstDayOfThisMonth; i++) {
+      const thisDate = firstDateOfThisMonth.subtract(i, 'day');
       datesArr.unshift(
-        <div key={Math.random()} className="date lastMonthDate">
-          {lastDateOfLastMonth + 1 - i}
+        <div
+          key={Math.random()}
+          className="date lastMonthDate"
+          data-this-date={`${dayjs(thisDate).format('YYYY/MM/DD')}`}
+        >
+          {dayjs(thisDate).date()}
         </div>,
       );
     }
@@ -96,8 +102,13 @@ function Calendar1(props) {
     // 下個月前幾天
     let nextMonthDateflag = 1;
     while (datesArr.length % 7 !== 0) {
+      const thisDate = lastDateOfThisMonth.add(nextMonthDateflag, 'day');
       datesArr.push(
-        <div key={Math.random()} className="date nextMonthDate">
+        <div
+          key={Math.random()}
+          className="date nextMonthDate"
+          data-this-date={`${dayjs(thisDate).format('YYYY/MM/DD')}`}
+        >
           {nextMonthDateflag}
         </div>,
       );
@@ -120,7 +131,14 @@ function Calendar1(props) {
           &gt;
         </button>
       </div>
-      <div className="dateWrapper">{renderDates()}</div>
+      <div
+        className="dateWrapper"
+        onClick={(e) => {
+          handleSelectedDates(e);
+        }}
+      >
+        {renderDates()}
+      </div>
     </div>
   );
 }

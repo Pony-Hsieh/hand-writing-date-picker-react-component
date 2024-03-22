@@ -61,10 +61,6 @@ function Calendar2(props) {
     const lastDateOfThisMonth = dayjs(
       `${date.year()}-${date.month() + 1}-${datesCount}`,
     );
-    const lastDateOfLastMonth = getDatesOfMonth(
-      date.subtract(1, 'month').year(),
-      date.subtract(1, 'month').month() + 1,
-    );
 
     // 這個月所有天數
     for (let i = 1; i <= datesCount; i++) {
@@ -86,9 +82,6 @@ function Calendar2(props) {
         <div
           key={i}
           className={classList}
-          onClick={(e) => {
-            handleSelectedDates(e);
-          }}
           data-this-date={`${dayjs(thisDate).format('YYYY/MM/DD')}`}
         >
           {i}
@@ -112,12 +105,9 @@ function Calendar2(props) {
         <div
           key={Math.random()}
           className={classList}
-          onClick={(e) => {
-            handleSelectedDates(e);
-          }}
           data-this-date={`${dayjs(thisDate).format('YYYY/MM/DD')}`}
         >
-          {lastDateOfLastMonth + 1 - i}
+          {dayjs(thisDate).date()}
         </div>,
       );
     }
@@ -139,9 +129,6 @@ function Calendar2(props) {
         <div
           key={Math.random()}
           className={classList}
-          onClick={(e) => {
-            handleSelectedDates(e);
-          }}
           data-this-date={`${dayjs(thisDate).format('YYYY/MM/DD')}`}
         >
           {nextMonthDateflag}
@@ -166,7 +153,14 @@ function Calendar2(props) {
           &gt;
         </button>
       </div>
-      <div className="dateWrapper">{renderDates()}</div>
+      <div
+        className="dateWrapper"
+        onClick={(e) => {
+          handleSelectedDates(e);
+        }}
+      >
+        {renderDates()}
+      </div>
     </div>
   );
 }
